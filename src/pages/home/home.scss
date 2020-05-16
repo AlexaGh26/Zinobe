@@ -1,0 +1,23 @@
+.main{
+    height: 100vh;
+    display: grid;
+    grid-template-areas: "header header "
+                         "nav content" ;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 80px 1fr;
+
+    &__header {
+    background: #b03532;
+    grid-area: header;
+    }
+
+    &__nav {
+    background: #33a8a5;
+    grid-area: nav;
+    }
+        
+    &__content {
+        background: #c9b927;
+        grid-area: content;
+    }
+}
