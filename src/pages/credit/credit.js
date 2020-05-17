@@ -21,6 +21,8 @@ import {
     SaveDataRedux,
     InsertValueInput,
 } from '../../state/actions/credit.action';
+import withAproval from '../../enhancers/withApproval';
+
 
 const CreditPage = (props) => {
     const { credit } = props;
@@ -32,6 +34,9 @@ const CreditPage = (props) => {
     useState(() => {
         props.InsertValueInput(100000);
     }, [])
+
+
+
     return (
         <LayoutTemplate {...props}>
             <section className="credit">
@@ -134,7 +139,10 @@ const CreditPage = (props) => {
                     </section>
                     <div className="form__button">
                         <Button variant="contained" color="primary"
-                            onClick={() => { props.SaveDataRedux(props.credit.credit_info) }}>
+                            onClick={() => {
+                                props.SaveDataRedux(props.credit.credit_info)
+                                props.approval()
+                            }}>
                             Enviar
                     </Button>
                     </div>

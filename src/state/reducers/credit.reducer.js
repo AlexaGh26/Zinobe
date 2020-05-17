@@ -21,15 +21,14 @@ export const CreditReducer = (state = {}, { type, payload }) => {
                 credit_info: { valueInput: payload },
             }
         case ADD_NUMBER_INPUT:
-            console.log(state);
             return {
                 ...state,
-                credit_info: { valueInput: state.credit_info.valueInput + payload },
+                credit_info: { ...state.credit_info, valueInput: state.credit_info.valueInput + payload },
             }
         case SUBTRACT_NUMBER_INPUT:
             return {
                 ...state,
-                credit_info: { valueInput: state.credit_info.valueInput - payload },
+                credit_info: { ...state.credit_info, valueInput: state.credit_info.valueInput - payload },
             }
         case SHOW_DATA_IN_REAL_TIME:
             return {
@@ -37,14 +36,13 @@ export const CreditReducer = (state = {}, { type, payload }) => {
                 credit_info: {
                     ...state.credit_info,
                     [payload.id]: payload.value,
-                }
+                },
+                list: [],
             }
         case SAVE_DATA_REDUX: {
-            state = { ...state, list: [] }
-            console.log(state)
+            state.list.push(payload)
             return {
                 ...state,
-                list: [state.list.push(state.credit)]
             }
         }
         default:

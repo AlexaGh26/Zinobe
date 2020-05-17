@@ -7,12 +7,14 @@ import allReducers from "./state/reducers/index";
 import HomePage from './pages/home/home';
 import CreditPage from './pages/credit/credit';
 import HistoryPage from './pages/history/history';
+import withApproval from './enhancers/withApproval';
 
 const store = createStore(
   allReducers,
   undefined,
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
 );
+const EnhancedCreditPage = withApproval(CreditPage);
 
 const App = () => (
   <Provider store={store}>
@@ -21,7 +23,7 @@ const App = () => (
         <Router>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/Home" component={HomePage} />
-          <Route exact path="/Credit" component={CreditPage} />
+          <Route exact path="/Credit" component={EnhancedCreditPage} />
           <Route exact path="/History" component={HistoryPage} />
         </Router>
       </Switch>
