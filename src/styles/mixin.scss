@@ -1,0 +1,7 @@
+@import ".//variables.scss";
+
+@mixin showBackgraound($paramBackground, $paramBoxShadow) {
+  box-shadow: $paramBoxShadow;
+  background-color: $paramBackground;
+  margin-bottom: 10px;
+}

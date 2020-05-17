@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import allReducers from "./state/reducers/index";
 import HomePage from './pages/home/home';
+import CreditPage from './pages/credit/credit';
+import HistoryPage from './pages/history/history';
 
 const store = createStore(
   allReducers,
@@ -17,7 +19,10 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Router>
-          <Route path="/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/Home" component={HomePage} />
+          <Route exact path="/Credit" component={CreditPage} />
+          <Route exact path="/History" component={HistoryPage} />
         </Router>
       </Switch>
     </BrowserRouter>

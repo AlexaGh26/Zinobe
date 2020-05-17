@@ -1,23 +1,36 @@
+@import "../../styles/variables.scss";
+
 .main{
     height: 100vh;
     display: grid;
     grid-template-areas: "header header "
-                         "nav content" ;
-    grid-template-columns: 150px 1fr;
+                         "menu content" ;
+    grid-template-columns: 180px 1fr;
     grid-template-rows: 80px 1fr;
+    overflow: hidden;
 
     &__header {
-    background: #b03532;
+    background:$backgraound-header;
     grid-area: header;
+    -webkit-box-shadow: -2px 5px 17px -8px $box-shadow-header;
+     -moz-box-shadow: -2px 5px 17px -8px $box-shadow-header;
+     box-shadow: -2px 5px 17px -8px $box-shadow-header;
+    
     }
 
-    &__nav {
-    background: #33a8a5;
-    grid-area: nav;
+    &__menu {
+    background: $backgraound-menu;
+    grid-area: menu;
     }
         
     &__content {
-        background: #c9b927;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
         grid-area: content;
+        overflow-y: auto;
+        overflow-x: auto;
+        
     }
 }

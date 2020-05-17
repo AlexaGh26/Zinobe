@@ -1,0 +1,27 @@
+.value-credit{
+    display: flex;
+
+    &__input{
+        text-align: center;
+        width: 210px;
+        height: 28px;
+        font-size: 14px;
+        color: rgb(75, 72, 72);
+        border: 1px solid #727ec077;
+    }
+    &__button{
+        width: 30px;
+        height: 28px;
+        text-align: center;
+        padding: 2px;
+        font-weight: 900;
+        font-size: 18px;
+        color:#3f51b5;
+        border-style: none;
+        background-color: #98999e65;
+        cursor: pointer;
+    }
+    &__button:hover{
+        background-color: #3f51b567;
+    }
+}
