@@ -7,12 +7,12 @@ import { bindActionCreators } from "redux";
 
 
 const ValueCreditComponent = (props) => {
-    const { valueInput } = props;
+    const { valueInput, BaseMount } = props;
     const { DEFAULTCREDITVALUE, MINVALUE, MAXVALUE } = CONFIG;
-
+    console.log(BaseMount)
     const AddValue = (value) => {
 
-        if (value === MAXVALUE) {
+        if (value === BaseMount) {
             alert("El valor màximo es $ 1.000.000")
         } else {
             props.AddNumberInput(DEFAULTCREDITVALUE)
@@ -34,8 +34,8 @@ const ValueCreditComponent = (props) => {
         </section >
     );
 }
-const mapStateToProps = ({ credit: { credit_info: { valueInput } } }) => ({
-    valueInput,
+const mapStateToProps = ({ credit: { BaseMount, credit_info: { valueInput } } }) => ({
+    valueInput, BaseMount
 });
 
 const mapDispatchToProps = (dispatch) =>

@@ -4,7 +4,8 @@ import './baseAmount.scss';
 
 const BaseAmountComponent = (props) => (
     <section className="" >
-        <section className="" >Valor
+        <section className="" >
+
         </section>
     </section>
 )

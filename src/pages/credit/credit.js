@@ -21,8 +21,7 @@ import {
     SaveDataRedux,
     InsertValueInput,
 } from '../../state/actions/credit.action';
-import withAproval from '../../enhancers/withApproval';
-
+import * as env from '../../environment';
 
 const CreditPage = (props) => {
     const { credit } = props;
@@ -31,11 +30,14 @@ const CreditPage = (props) => {
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
+
+    const { BASE_AMOUNT } = env[process.env.NODE_ENV];
+
     useState(() => {
+        props.InsertBaseMount(BASE_AMOUNT)
         props.InsertValueInput(100000);
+
     }, [])
-
-
 
     return (
         <LayoutTemplate {...props}>

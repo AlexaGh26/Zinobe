@@ -9,6 +9,8 @@ export const CreditReducer = (state = {}, { type, payload }) => {
             return {
                 ...state,
                 BaseMount: payload,
+
+
             }
         case INSERT_BASE_MOUNT:
             return {
@@ -19,6 +21,7 @@ export const CreditReducer = (state = {}, { type, payload }) => {
             return {
                 ...state,
                 credit_info: { valueInput: payload },
+                list: [],
             }
         case ADD_NUMBER_INPUT:
             return {
@@ -37,12 +40,13 @@ export const CreditReducer = (state = {}, { type, payload }) => {
                     ...state.credit_info,
                     [payload.id]: payload.value,
                 },
-                list: [],
+
             }
         case SAVE_DATA_REDUX: {
-            state.list.push(payload)
+
             return {
                 ...state,
+                list: [...state.list, payload]
             }
         }
         default:
