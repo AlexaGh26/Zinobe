@@ -3,9 +3,9 @@ import './baseAmount.scss';
 
 
 const BaseAmountComponent = (props) => (
-    <section className="" >
-        <section className="" >
-
+    <section className="base-amount" >
+        <section className="amount" >
+            Monto base: {props.amount}
         </section>
     </section>
 )

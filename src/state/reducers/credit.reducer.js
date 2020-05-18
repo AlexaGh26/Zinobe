@@ -9,9 +9,7 @@ export const CreditReducer = (state = {}, { type, payload }) => {
         case UPDATE_BASE_MOUNT:
             return {
                 ...state,
-                BaseMount: payload,
-
-
+                BaseMount: state.BaseMount - payload,
             }
         case INSERT_BASE_MOUNT:
             return {

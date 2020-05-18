@@ -140,6 +140,9 @@ const CreditPage = (props) => {
                         <Button variant="contained" color="primary"
                             onClick={() => {
                                 props.SaveDataRedux(props.credit.credit_info);
+                                if (props.credit.credit_info.approval) {
+                                    props.UpdateBaseMount(props.credit.credit_info.valueInput);
+                                }
                                 firebase.database().ref('credit_info').push(props.credit.credit_info);
                             }}>
                             Enviar

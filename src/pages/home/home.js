@@ -16,7 +16,7 @@ const HomePage = (props) => {
 
     return (
         <LayoutTemplate {...props}>
-            Home
+
         </LayoutTemplate>
     );
 }
