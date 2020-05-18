@@ -9,9 +9,10 @@ import { bindActionCreators } from "redux";
 const ValueCreditComponent = (props) => {
     const { valueInput, BaseMount, onCalculate } = props;
     const { DEFAULTCREDITVALUE, MINVALUE, MAXVALUE } = CONFIG;
+
     const AddValue = (value) => {
-        if (value === BaseMount) {
-            alert("El valor màximo es $ 1.000.000")
+        if (value >= BaseMount) {
+            alert("Ha superado el valor màximo")
         } else {
             props.AddNumberInput(DEFAULTCREDITVALUE)
         }

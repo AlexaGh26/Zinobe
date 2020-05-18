@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const withApproval = (Component) => {
 
     const WithAproval = () => {
@@ -16,7 +15,6 @@ const withApproval = (Component) => {
     return (
         WithAproval
     )
-
 }
 
 export default withApproval;

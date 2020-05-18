@@ -22,10 +22,12 @@ import {
     InsertValueInput,
 } from '../../state/actions/credit.action';
 import * as env from '../../environment';
+import { CONFIG } from '../../config'
 
 import firebase from 'firebase';
 
 const CreditPage = (props) => {
+    const { credit: { credit_info } } = props
     const { credit } = props;
     const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
@@ -139,11 +141,30 @@ const CreditPage = (props) => {
                     <div className="form__button">
                         <Button variant="contained" color="primary"
                             onClick={() => {
-                                props.SaveDataRedux(props.credit.credit_info);
-                                if (props.credit.credit_info.approval) {
-                                    props.UpdateBaseMount(props.credit.credit_info.valueInput);
+                                props.SaveDataRedux(credit_info);
+                                const { credit: { credit_info: { valueInput, approval } }, BaseMount } = props
+                                if (approval) {
+
+                                    if (props.credit.BaseMount === 0) {
+                                        alert(CONFIG.NOCREDIT)
+                                        return
+
+                                    } if ((BaseMount - valueInput) <= 0) {
+                                        alert(CONFIG.BEATS)
+                                        return
+
+                                    } if (props.credit.BaseMount < BaseMount) {
+                                        alert(CONFIG.AMOUNTCREDIT)
+                                        return
+                                    } if (approval) {
+                                        alert(CONFIG.APPROVAL)
+                                        props.UpdateBaseMount(valueInput);
+                                    }
+                                } else {
+                                    alert(CONFIG.DENIED)
                                 }
-                                firebase.database().ref('credit_info').push(props.credit.credit_info);
+                                firebase.database().ref('credit_info').push(credit_info);
+
                             }}>
                             Enviar
                     </Button>
