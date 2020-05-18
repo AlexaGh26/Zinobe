@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## NOTE:
+
+Para que las tablas del historial carguen datos y puedan ver como se muestran, por favor ingresàr informaciòn en el formulario de soliciud de crèdito, se estàn 
+mostrando por lo cargado en el Redux en tiempo real.
+
 ## Available Scripts
 
 In the project directory, you can run:
