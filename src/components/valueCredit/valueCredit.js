@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './valueCredit.scss';
 import { AddNumberInput, SubtractNumberInput } from '../../state/actions/credit.action';
 import { CONFIG } from '../../config';
@@ -7,11 +7,9 @@ import { bindActionCreators } from "redux";
 
 
 const ValueCreditComponent = (props) => {
-    const { valueInput, BaseMount } = props;
+    const { valueInput, BaseMount, onCalculate } = props;
     const { DEFAULTCREDITVALUE, MINVALUE, MAXVALUE } = CONFIG;
-    console.log(BaseMount)
     const AddValue = (value) => {
-
         if (value === BaseMount) {
             alert("El valor màximo es $ 1.000.000")
         } else {
@@ -28,9 +26,9 @@ const ValueCreditComponent = (props) => {
 
     return (
         <section className="value-credit" >
-            <div className="value-credit__button" onClick={() => SubstractValue(valueInput)} >-</div>
+            <div className="value-credit__button" onClick={() => { SubstractValue(valueInput); onCalculate() }} >-</div>
             <input className="value-credit__input" type="number" readOnly={false} value={valueInput}  ></input>
-            <div className="value-credit__button" onClick={() => AddValue(valueInput)} >+</div>
+            <div className="value-credit__button" onClick={() => { AddValue(valueInput); onCalculate() }} >+</div>
         </section >
     );
 }

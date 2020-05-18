@@ -5,6 +5,7 @@ export const ADD_NUMBER_INPUT = "ADD_NUMBER_INPUT";
 export const SUBTRACT_NUMBER_INPUT = "SUBTRACT_NUMBER_INPUT";
 export const SHOW_DATA_IN_REAL_TIME = "SHOW_DATA_IN_REAL_TIME";
 export const SAVE_DATA_REDUX = "SAVE_DATA_REDUX";
+export const ADD_STATE_CREDIT = "ADD_STATE_CREDIT";
 
 export const UpdateBaseMount = (payload) => {
     return {
@@ -52,4 +53,12 @@ export const SaveDataRedux = (payload) => {
         payload
     }
 }
+
+export const AddStateCredit = (payload) => {
+    return {
+        type: ADD_STATE_CREDIT,
+        payload
+    }
+}
+
 

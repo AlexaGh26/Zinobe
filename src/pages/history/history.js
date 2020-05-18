@@ -8,8 +8,42 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TableComponent from '../../components/table/table';
+import { ShowDataInRealTime } from '../../state/actions/credit.action';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const HistoryPage = (props) => {
+    const { credit: { list } } = props
+    // logic for the table component
+
+    function createData(name, surname, identification, eMail, valueInput, approval) {
+        return [
+            { value: name },
+            { value: surname },
+            { value: identification },
+            { value: eMail },
+            { value: valueInput },
+            { value: approval }];
+    }
+    const rows = list.map(({ name, surname, identification, eMail, valueInput, approval }) => {
+        if (approval) {
+            return createData(name, surname, identification, eMail, valueInput, 'Aceptado')
+        }
+    }).filter((item) => !!item)
+    const rowsNotApproved = list.map(({ name, surname, identification, eMail, valueInput, approval }) => {
+        if (!approval) {
+            return createData(name, surname, identification, eMail, valueInput, 'Rechazado')
+        }
+    }).filter((item) => !!item)
+    const columns = [
+        { name: 'Nombre' },
+        { name: 'Apellido' },
+        { name: 'Identificacion' },
+        { name: 'Mail' },
+        { name: 'Valor credito' },
+        { name: 'Estado' }];
+
+    // Logic for the Tab component
 
     function a11yProps(index) {
         return {
@@ -60,7 +94,7 @@ const HistoryPage = (props) => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+    // end logic
 
     return (
         <LayoutTemplate {...props} >
@@ -78,16 +112,27 @@ const HistoryPage = (props) => {
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0}>
-                    Creditos Aprobados
-                    <TableComponent></TableComponent>
+                    <h3 className="title_table" >Listado de creditos Aprobados:</h3>
+                    {rows.length ? <TableComponent rows={rows} columns={columns}></TableComponent> : ''}
+
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    Creditos Rechazados
+                    <h3 className="title_table">Listado de creditos Rechazados:</h3>
+                    {rowsNotApproved.length ? <TableComponent rows={rowsNotApproved} columns={columns}></TableComponent> : ''}
                 </TabPanel>
             </div>
 
         </LayoutTemplate>
     );
 }
+// connect the Redux for HistoryPage
 
-export default HistoryPage;
+const mapStateToProps = ({ credit }) => ({
+    credit,
+});
+
+const mapDispatchToProps = (dispatch) =>
+    bindActionCreators({ ShowDataInRealTime }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryPage);
+

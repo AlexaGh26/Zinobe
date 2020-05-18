@@ -1,6 +1,7 @@
 import {
     UPDATE_BASE_MOUNT, INSERT_BASE_MOUNT, INSERT_VALUE_INPUT,
-    ADD_NUMBER_INPUT, SUBTRACT_NUMBER_INPUT, SHOW_DATA_IN_REAL_TIME, SAVE_DATA_REDUX
+    ADD_NUMBER_INPUT, SUBTRACT_NUMBER_INPUT, SHOW_DATA_IN_REAL_TIME,
+    SAVE_DATA_REDUX, ADD_STATE_CREDIT
 } from "../actions/credit.action"
 
 export const CreditReducer = (state = {}, { type, payload }) => {
@@ -47,6 +48,12 @@ export const CreditReducer = (state = {}, { type, payload }) => {
             return {
                 ...state,
                 list: [...state.list, payload]
+            }
+        }
+        case ADD_STATE_CREDIT: {
+            return {
+                ...state,
+                StateCredit: payload
             }
         }
         default:
